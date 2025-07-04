@@ -3,79 +3,96 @@
 [![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Detecting the presence of protective face masks on people's faces based on images.  
+Detecting the presence of protective face masks on people's faces using computer vision and deep learning.
 
 ---
 
-## 📝 Project Description
+## Project Description
 
-The aim of this project is to build a computer vision system that can automatically classify images into three categories:
-- **With mask**
-- **Without mask**
-- **Mask worn incorrectly**
+This project aims to build a deep learning-based computer vision system that classifies images into three categories:
+- **With Mask**
+- **Without Mask**
+- **Mask Worn Incorrectly**
 
-We use deep learning techniques based on convolutional neural networks (CNNs).  
-The model was trained and evaluated using a publicly available dataset from Kaggle.
+The model is based on **Convolutional Neural Networks (CNN)** and uses **transfer learning** via **MobileNetV2** — a lightweight model suitable for real-time applications.  
+Training and evaluation were conducted using a labeled dataset from Kaggle containing images and bounding box annotations.
 
 ---
 
-## 📂 Dataset
+## Dataset
 
-The dataset used for training and validation can be found here:  
-🔗 [Face Mask Detection Dataset on Kaggle](https://www.kaggle.com/datasets/andrewmvd/face-mask-detection)
+The dataset used is publicly available on Kaggle:  
+[Face Mask Detection Dataset – by andrewmvd](https://www.kaggle.com/datasets/andrewmvd/face-mask-detection)
 
-> **Important:**  
-> The dataset files are **NOT** included in this repository due to their large size.  
-> Please download the dataset manually and extract the archive directly into the project folder.
+> **Note:** The dataset is not included in this repository due to size restrictions.  
+> Please download it manually and extract it into the project directory.
 
-After extraction, your project folder should look like this:
+Expected folder structure:
 
 ```
 protective-mask-detection/
-├── annotations/
-├── images/
-├── archive.zip
-├── test1.jpg
-├── test2.jpg
-├── test3.jpg
-├── test4.jpg
-├── test5.jpg
-└── Coding.ipynb
-```
-
-## 📁 Project Structure
-
-```
-protective-mask-detection/
-├── annotations/         # Annotations for the images
-├── images/              # Original dataset images
-├── archive.zip          # Original dataset archive
-├── test1.jpg - test5.jpg # Test images
-├── Coding.ipynb         # Jupyter notebook with code
-├── LICENSE
-└── README.md
+├── annotations/ # XML annotations (Pascal VOC format)
+├── images/ # Raw image files
+├── archive.zip # Original dataset archive
+├── test1.jpg - test5.jpg # Sample test images
+├── Coding.ipynb # Jupyter notebook with full training pipeline
 ```
 
 ---
-## 📊 Example Usage
 
-After training, the model can classify input images into three categories with high accuracy:
-- Wearing Mask
-- No Mask
-- Mask Worn Incorrectly
+## Project Structure
 
-
----
-
-## 🚀 Future Improvements
-
-- Add a validation set for better performance monitoring
-- Implement real-time mask detection using webcam input
-- Optimize the model for deployment on mobile/embedded devices
+| File/Folder       | Description |
+|-------------------|-------------|
+| `Coding.ipynb`    | Main notebook with preprocessing, model training, evaluation, and inference |
+| `images/`         | Input images used for training/testing |
+| `annotations/`    | XML annotations with class labels and bounding boxes |
+| `test*.jpg`       | Custom images used for final testing |
+| `README.md`       | Project description |
+| `LICENSE`         | MIT license |
 
 ---
 
-## 📄 License
+## Model & Techniques Used
 
-This project is licensed under the MIT License.  
-See the [LICENSE](LICENSE) file for more information.
+- **MobileNetV2** (pretrained on ImageNet, used for transfer learning)
+- **Fine-tuning** of the last CNN layers
+   **Image preprocessing** using OpenCV and TensorFlow
+- **Multi-class classification** using softmax activation
+- **Evaluation** using accuracy score and confusion matrix
+
+---
+
+## Libraries & Tools
+
+- `TensorFlow`, `Keras`
+- `OpenCV`
+- `NumPy`, `matplotlib`, `os`, `xml.etree.ElementTree`
+-  Jupyter environment
+
+---
+
+## Example Usage
+
+After training, the model can classify any input image into:
+- **Wearing Mask**
+- **No Mask**
+- **Mask Worn Incorrectly**
+
+Example output:
+
+Input Image → Predicted: Mask Worn Incorrectly
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Author
+
+**Oleh Zemlianyi**  
+[LinkedIn](https://www.linkedin.com/in/oleh-zemlianyi) • [GitHub](https://github.com/ozzyonn1)
